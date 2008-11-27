@@ -1,0 +1,9 @@
+category: Interpreters
+requires: cygwin crypt libgdbm4 libgmp3 libintl8 libreadline6
+external-source: librep
+sdesc: "Lisp interpreter library (runtime)"
+ldesc: "librep is a shared library implementing a Lisp dialect that is
+lightweight, reasonably fast, and highly extensible. It contains an
+interpreter, byte-code compiler and virtual machine. Applications may
+use the interpreter as an extension language, or it may be used for
+standalone scripts."

@@ -1,0 +1,8 @@
+category: Interpreters
+requires: cygwin librep9
+sdesc: "Lisp interpreter library (app)"
+ldesc: "librep is a shared library implementing a Lisp dialect that is
+lightweight, reasonably fast, and highly extensible. It contains an
+interpreter, byte-code compiler and virtual machine. Applications may
+use the interpreter as an extension language, or it may be used for
+standalone scripts."

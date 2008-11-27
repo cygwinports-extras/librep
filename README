@@ -1,0 +1,331 @@
+librep
+------------------------------------------
+librep is a shared library implementing a Lisp dialect that is 
+lightweight, reasonably fast, and highly extensible. It contains an 
+interpreter, byte-code compiler and virtual machine. Applications may 
+use the interpreter as an extension language, or it may be used for 
+standalone scripts.
+
+Runtime requirements:
+  cygwin-1.5.25-15
+  crypt-1.1-1
+  libgdbm4-1.8.3-8
+  libgmp3-4.2.4-1
+  libintl8-0.17-2
+  libreadline6-5.2.12-10
+
+Build requirements:
+(besides corresponding -devel packages)
+  autoconf2.5-2.63-1
+  automake1.10-1.10.1-2
+  binutils-20080624-2
+  cygport-0.4.2-1
+  gawk-3.1.6-1
+  gcc-core-3.4.4-3
+  libtool-2.2.6a-1
+  make-3.81-1
+  sed-4.1.5-2
+
+Canonical website:
+  http://librep.sourceforge.net/
+
+Canonical download:
+  http://downloads.sourceforge.net/librep/
+
+-------------------------------------------
+
+Build instructions:
+  unpack librep-0.17.2-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./librep-0.17.2-X.cygport all
+
+This will create:
+  /usr/src/librep-0.17.2-X-src.tar.bz2
+  /usr/src/librep-0.17.2-X.tar.bz2
+  /usr/src/librep-devel-0.17.2-X.tar.bz2
+  /usr/src/librep9-0.17.2-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary packages:
+
+(librep)
+  /usr/bin/rep-remote.exe
+  /usr/bin/rep.exe
+  /usr/share/doc/librep-0.17.2/AUTHORS
+  /usr/share/doc/librep-0.17.2/BUGS
+  /usr/share/doc/librep-0.17.2/COPYING
+  /usr/share/doc/librep-0.17.2/ChangeLog
+  /usr/share/doc/librep-0.17.2/HACKING
+  /usr/share/doc/librep-0.17.2/INSTALL
+  /usr/share/doc/librep-0.17.2/MAINTAINERS
+  /usr/share/doc/librep-0.17.2/README
+  /usr/share/doc/librep-0.17.2/THANKS
+  /usr/share/doc/librep-0.17.2/TODO
+  /usr/share/info/librep.info.gz
+
+(librep9)
+  /usr/bin/cygrep-9.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/doc-strings
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/emulate-gnu-tar
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/data/tables.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/data/tables.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/ffi.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/ffi.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/i18n/gettext.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/i18n/gettext.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/db/gdbm.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/db/gdbm.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/db/sdbm.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/db/sdbm.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/readline.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/readline.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/sockets.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/sockets.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/timers.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/io/timers.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/lang/record-profile.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/lang/record-profile.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/util/md5.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/util/md5.la
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/vm/safe-interpreter.dll
+  /usr/lib/rep/0.17.2/i686-pc-cygwin/rep/vm/safe-interpreter.la
+  /usr/share/rep/0.17.2/lisp/cgi-get.jl
+  /usr/share/rep/0.17.2/lisp/cgi-get.jlc
+  /usr/share/rep/0.17.2/lisp/compiler.jl
+  /usr/share/rep/0.17.2/lisp/compiler.jlc
+  /usr/share/rep/0.17.2/lisp/date.jl
+  /usr/share/rep/0.17.2/lisp/date.jlc
+  /usr/share/rep/0.17.2/lisp/disassembler.jl
+  /usr/share/rep/0.17.2/lisp/disassembler.jlc
+  /usr/share/rep/0.17.2/lisp/gaol.jl
+  /usr/share/rep/0.17.2/lisp/gaol.jlc
+  /usr/share/rep/0.17.2/lisp/lisp-doc.jl
+  /usr/share/rep/0.17.2/lisp/lisp-doc.jlc
+  /usr/share/rep/0.17.2/lisp/mailaddr.jl
+  /usr/share/rep/0.17.2/lisp/mailaddr.jlc
+  /usr/share/rep/0.17.2/lisp/memoize.jl
+  /usr/share/rep/0.17.2/lisp/memoize.jlc
+  /usr/share/rep/0.17.2/lisp/mutex.jl
+  /usr/share/rep/0.17.2/lisp/mutex.jlc
+  /usr/share/rep/0.17.2/lisp/queues.jl
+  /usr/share/rep/0.17.2/lisp/queues.jlc
+  /usr/share/rep/0.17.2/lisp/records.jl
+  /usr/share/rep/0.17.2/lisp/records.jlc
+  /usr/share/rep/0.17.2/lisp/remote-ftp.jl
+  /usr/share/rep/0.17.2/lisp/remote-ftp.jlc
+  /usr/share/rep/0.17.2/lisp/remote-rep.jl
+  /usr/share/rep/0.17.2/lisp/remote-rep.jlc
+  /usr/share/rep/0.17.2/lisp/rep.jl
+  /usr/share/rep/0.17.2/lisp/rep.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data.jl
+  /usr/share/rep/0.17.2/lisp/rep/data.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/objects.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/objects.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/queues.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/queues.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/records.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/records.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/ring.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/ring.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/sort.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/sort.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/string-util.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/string-util.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/symbol-table.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/symbol-table.jlc
+  /usr/share/rep/0.17.2/lisp/rep/data/trie.jl
+  /usr/share/rep/0.17.2/lisp/rep/data/trie.jlc
+  /usr/share/rep/0.17.2/lisp/rep/i18n/xgettext.jl
+  /usr/share/rep/0.17.2/lisp/rep/i18n/xgettext.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/ftp.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/ftp.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/rcp.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/rcp.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/rep.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/rep.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/utils.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/remote/utils.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/tar.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/tar.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/tilde.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/file-handlers/tilde.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/files.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/files.jlc
+  /usr/share/rep/0.17.2/lisp/rep/io/streams.jl
+  /usr/share/rep/0.17.2/lisp/rep/io/streams.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/backquote.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/backquote.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/compat-doc.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/compat-doc.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/debugger.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/debugger.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/define.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/define.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/doc.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/doc.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/error-helper.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/error-helper.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/interpreter.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/interpreter.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/math.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/math.jlc
+  /usr/share/rep/0.17.2/lisp/rep/lang/profiler.jl
+  /usr/share/rep/0.17.2/lisp/rep/lang/profiler.jlc
+  /usr/share/rep/0.17.2/lisp/rep/mail/addr.jl
+  /usr/share/rep/0.17.2/lisp/rep/mail/addr.jlc
+  /usr/share/rep/0.17.2/lisp/rep/module-system.jl
+  /usr/share/rep/0.17.2/lisp/rep/module-system.jlc
+  /usr/share/rep/0.17.2/lisp/rep/net/domain-name.jl
+  /usr/share/rep/0.17.2/lisp/rep/net/domain-name.jlc
+  /usr/share/rep/0.17.2/lisp/rep/net/rpc.jl
+  /usr/share/rep/0.17.2/lisp/rep/net/rpc.jlc
+  /usr/share/rep/0.17.2/lisp/rep/regexp.jl
+  /usr/share/rep/0.17.2/lisp/rep/regexp.jlc
+  /usr/share/rep/0.17.2/lisp/rep/structures.jl
+  /usr/share/rep/0.17.2/lisp/rep/structures.jlc
+  /usr/share/rep/0.17.2/lisp/rep/system.jl
+  /usr/share/rep/0.17.2/lisp/rep/system.jlc
+  /usr/share/rep/0.17.2/lisp/rep/system/environ.jl
+  /usr/share/rep/0.17.2/lisp/rep/system/environ.jlc
+  /usr/share/rep/0.17.2/lisp/rep/system/pwd-prompt.jl
+  /usr/share/rep/0.17.2/lisp/rep/system/pwd-prompt.jlc
+  /usr/share/rep/0.17.2/lisp/rep/test/autoload.jl
+  /usr/share/rep/0.17.2/lisp/rep/test/data.jl
+  /usr/share/rep/0.17.2/lisp/rep/test/data.jlc
+  /usr/share/rep/0.17.2/lisp/rep/test/framework.jl
+  /usr/share/rep/0.17.2/lisp/rep/test/framework.jlc
+  /usr/share/rep/0.17.2/lisp/rep/threads/condition-variable.jl
+  /usr/share/rep/0.17.2/lisp/rep/threads/condition-variable.jlc
+  /usr/share/rep/0.17.2/lisp/rep/threads/message-port.jl
+  /usr/share/rep/0.17.2/lisp/rep/threads/message-port.jlc
+  /usr/share/rep/0.17.2/lisp/rep/threads/mutex.jl
+  /usr/share/rep/0.17.2/lisp/rep/threads/mutex.jlc
+  /usr/share/rep/0.17.2/lisp/rep/threads/proxy.jl
+  /usr/share/rep/0.17.2/lisp/rep/threads/proxy.jlc
+  /usr/share/rep/0.17.2/lisp/rep/threads/utils.jl
+  /usr/share/rep/0.17.2/lisp/rep/threads/utils.jlc
+  /usr/share/rep/0.17.2/lisp/rep/user.jl
+  /usr/share/rep/0.17.2/lisp/rep/user.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/autoloader.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/autoloader.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/base64.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/base64.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/date.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/date.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/gaol.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/gaol.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/ispell.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/ispell.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/memoize.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/memoize.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/repl.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/repl.jlc
+  /usr/share/rep/0.17.2/lisp/rep/util/time.jl
+  /usr/share/rep/0.17.2/lisp/rep/util/time.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/assembler.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/assembler.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/bytecode-defs.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/bytecode-defs.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/bytecodes.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/bytecodes.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/basic.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/basic.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/bindings.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/bindings.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/inline.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/inline.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/lap.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/lap.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/modules.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/modules.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/no-lang.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/no-lang.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/rep.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/rep.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/scheme.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/scheme.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/src.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/src.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/unscheme.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/unscheme.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/utils.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/compiler/utils.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/disassembler.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/disassembler.jlc
+  /usr/share/rep/0.17.2/lisp/rep/vm/peephole.jl
+  /usr/share/rep/0.17.2/lisp/rep/vm/peephole.jlc
+  /usr/share/rep/0.17.2/lisp/rep/www/cgi-get.jl
+  /usr/share/rep/0.17.2/lisp/rep/www/cgi-get.jlc
+  /usr/share/rep/0.17.2/lisp/rep/www/fetch-url.jl
+  /usr/share/rep/0.17.2/lisp/rep/www/fetch-url.jlc
+  /usr/share/rep/0.17.2/lisp/rep/www/quote-url.jl
+  /usr/share/rep/0.17.2/lisp/rep/www/quote-url.jlc
+  /usr/share/rep/0.17.2/lisp/rep/xml/printer.jl
+  /usr/share/rep/0.17.2/lisp/rep/xml/printer.jlc
+  /usr/share/rep/0.17.2/lisp/rep/xml/reader.jl
+  /usr/share/rep/0.17.2/lisp/rep/xml/reader.jlc
+  /usr/share/rep/0.17.2/lisp/ring.jl
+  /usr/share/rep/0.17.2/lisp/ring.jlc
+  /usr/share/rep/0.17.2/lisp/scheme.jl
+  /usr/share/rep/0.17.2/lisp/scheme.jlc
+  /usr/share/rep/0.17.2/lisp/scheme/data.jl
+  /usr/share/rep/0.17.2/lisp/scheme/data.jlc
+  /usr/share/rep/0.17.2/lisp/scheme/misc.jl
+  /usr/share/rep/0.17.2/lisp/scheme/misc.jlc
+  /usr/share/rep/0.17.2/lisp/scheme/syntax-funs.jl
+  /usr/share/rep/0.17.2/lisp/scheme/syntax-funs.jlc
+  /usr/share/rep/0.17.2/lisp/scheme/syntax.jl
+  /usr/share/rep/0.17.2/lisp/scheme/syntax.jlc
+  /usr/share/rep/0.17.2/lisp/scheme/utils.jl
+  /usr/share/rep/0.17.2/lisp/scheme/utils.jlc
+  /usr/share/rep/0.17.2/lisp/symbol-table.jl
+  /usr/share/rep/0.17.2/lisp/symbol-table.jlc
+  /usr/share/rep/0.17.2/lisp/unscheme.jl
+  /usr/share/rep/0.17.2/lisp/unscheme.jlc
+  /usr/share/rep/0.17.2/lisp/unscheme/data.jl
+  /usr/share/rep/0.17.2/lisp/unscheme/data.jlc
+  /usr/share/rep/0.17.2/lisp/unscheme/misc.jl
+  /usr/share/rep/0.17.2/lisp/unscheme/misc.jlc
+  /usr/share/rep/0.17.2/lisp/unscheme/syntax-funs.jl
+  /usr/share/rep/0.17.2/lisp/unscheme/syntax-funs.jlc
+  /usr/share/rep/0.17.2/lisp/unscheme/syntax.jl
+  /usr/share/rep/0.17.2/lisp/unscheme/syntax.jlc
+
+(librep-devel)
+  /usr/bin/rep-config
+  /usr/bin/rep-xgettext
+  /usr/bin/repdoc.exe
+  /usr/include/rep.h
+  /usr/include/rep_gh.h
+  /usr/include/rep_lisp.h
+  /usr/include/rep_regexp.h
+  /usr/include/rep_subrs.h
+  /usr/lib/librep.dll.a
+  /usr/lib/librep.la
+  /usr/lib/pkgconfig/librep.pc
+  /usr/lib/rep/i686-pc-cygwin/install-aliases
+  /usr/lib/rep/i686-pc-cygwin/libtool
+  /usr/lib/rep/i686-pc-cygwin/rep_config.h
+  /usr/lib/rep/i686-pc-cygwin/rules.mk
+  /usr/share/aclocal/rep.m4
+  /usr/share/emacs/site-lisp/rep-debugger.el
+
+------------------
+
+Port Notes:
+
+----- version 0.17.2-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/

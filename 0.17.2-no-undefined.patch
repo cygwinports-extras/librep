@@ -1,0 +1,112 @@
+--- origsrc/librep-0.17.2/rules.mk.sh	2008-10-18 07:17:00.000000000 -0500
++++ src/librep-0.17.2/rules.mk.sh	2008-11-26 23:19:39.574861300 -0600
+@@ -19,7 +19,7 @@
+ # foo.la : foo.lo bar.lo
+ #	\$(rep_DL_LD) link-opts...
+ 
+-rep_DL_LD=\$(rep_LIBTOOL) --mode=link --tag=CC \$(CC) -avoid-version -module \
++rep_DL_LD=\$(rep_LIBTOOL) --mode=link --tag=CC \$(CC) -avoid-version -module -no-undefined \
+ 	  -rpath \$(rpath_repcommonexecdir)
+ 
+ rep_DL_INSTALL=\$(rep_LIBTOOL) --mode=install \$(INSTALL)
+--- origsrc/librep-0.17.2/src/Makefile.in	2008-10-18 07:29:13.000000000 -0500
++++ src/librep-0.17.2/src/Makefile.in	2008-11-26 23:25:32.371736300 -0600
+@@ -57,7 +57,7 @@
+ 
+ librep.la : $(OBJS) $(LIBOBJS) $(ALLOCA)
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) \
+-	  -version-info $(libversion) -export-symbols $(srcdir)/librep.sym \
++	  -version-info $(libversion) -export-symbols $(srcdir)/librep.sym -no-undefined \
+ 	  -o $@ $^ -rpath $(libdir) $(LIBS) $(GMP_LIBS)
+ 
+ rep : $(REP_OBJS) $(EXTRA_LIBOBJS) librep.la
+@@ -134,30 +134,39 @@
+ repdoc : repdoc.o
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -o $@ $^ $(GDBM_LIBS)
+ 
+-sdbm.la : $(SDBM_LOBJS) repsdbm.lo
++sdbm.la : $(SDBM_LOBJS) repsdbm.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-gdbm.la : repgdbm.lo
++gdbm.la : repgdbm.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(GDBM_LIBS)
+ 
+-gettext.la : gettext.lo
++gettext.la : gettext.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(INTL_OBJS)
+ 
+-readline.la : readline.lo
++readline.la : readline.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(READLINE_LIBS)
+ 
+-safe-interpreter.la : safemach.lo
++safe-interpreter.la : safemach.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-sockets.la : sockets.lo
++sockets.la : sockets.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-md5.la : md5.lo rep-md5.lo
++md5.la : md5.lo rep-md5.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-ffi.la : ffi.lo
++ffi.la : ffi.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(FFI_LIBS)
+ 
++record-profile.la : record-profile.lo librep.la
++	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
++
++tables.la : tables.lo librep.la
++	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
++
++timers.la : timers.lo librep.la
++	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
++
+ .libexec : $(DL_OBJS)
+ 	$(SHELL) $(srcdir)/fake-libexec
+ 
+--- origsrc/librep-0.17.2/src/librep.sym	2008-10-18 07:09:44.000000000 -0500
++++ src/librep-0.17.2/src/librep.sym	2008-11-26 23:27:17.527986300 -0600
+@@ -608,6 +608,7 @@
+ rep_int_cell
+ rep_integer_foldl
+ rep_integer_gcd
++rep_intern_dl_library
+ rep_intern_static
+ rep_keyword_obarray
+ rep_kill
+@@ -621,6 +622,7 @@
+ rep_load_autoload
+ rep_load_environment
+ rep_localise_and_get_handler
++rep_lookup_dl_symbol
+ rep_lookup_errno
+ rep_make_float
+ rep_make_long_int
+@@ -658,6 +660,7 @@
+ rep_op_insert_file_contents
+ rep_op_read_file_contents
+ rep_op_write_buffer_contents
++rep_parse_number
+ rep_pending_thread_yield
+ rep_poll_input
+ rep_pop_regexp_data
+@@ -687,6 +690,7 @@
+ rep_regsublen_fun
+ rep_scm_f
+ rep_scm_t
++rep_search_imports
+ rep_set_local_symbol_fun
+ rep_set_string_len
+ rep_set_string_match
+@@ -710,6 +714,7 @@
+ rep_structure
+ rep_structure_exports_all
+ rep_structure_set_binds
++rep_structure_type
+ rep_term_cell
+ rep_test_int_counter
+ rep_test_int_fun
