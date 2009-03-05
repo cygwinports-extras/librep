@@ -1,6 +1,6 @@
---- origsrc/librep-0.17.2/Makedefs.in	2008-10-18 07:29:13.000000000 -0500
-+++ src/librep-0.17.2/Makedefs.in	2008-11-26 23:31:25.059236300 -0600
-@@ -24,6 +24,7 @@
+--- origsrc/librep-0.17.3/Makedefs.in	2008-10-18 07:29:13.000000000 -0500
++++ src/librep-0.17.3/Makedefs.in	2009-03-05 12:52:23.203955200 -0600
+@@ -24,6 +24,7 @@ SHELL=/bin/sh
  
  top_srcdir=@top_srcdir@
  srcdir=@srcdir@
@@ -8,7 +8,7 @@
  
  prefix=@prefix@
  exec_prefix=@exec_prefix@
-@@ -79,11 +80,11 @@
+@@ -79,11 +80,11 @@ HAVE_UNIX=@HAVE_UNIX@
  .PHONY: clean realclean install
  
  rep_prog = $(top_builddir)/src/rep
@@ -22,9 +22,9 @@
  rep_LIBTOOL=@LIBTOOL@
  
  # Rule for ``normal'' C objects
---- origsrc/librep-0.17.2/Makefile.in	2008-08-29 09:16:19.000000000 -0500
-+++ src/librep-0.17.2/Makefile.in	2008-11-27 01:03:59.400342200 -0600
-@@ -49,11 +49,11 @@
+--- origsrc/librep-0.17.3/Makefile.in	2008-12-20 03:06:26.000000000 -0600
++++ src/librep-0.17.3/Makefile.in	2009-03-05 12:51:07.486659000 -0600
+@@ -49,13 +49,13 @@ install : all installdirs
  	  ( cd $$dir && $(MAKE) $@ ) || exit 1; \
  	done
  	$(INSTALL_DATA) doc-strings $(DESTDIR)$(repexecdir)
@@ -36,21 +36,15 @@
 -	$(INSTALL_DATA) rep-debugger.el $(DESTDIR)$(emacssitelispdir)
 +	$(INSTALL_SCRIPT) $(top_srcdir)/install-aliases $(DESTDIR)$(repcommonexecdir)
 +	$(INSTALL_DATA) $(top_srcdir)/rep-debugger.el $(DESTDIR)$(emacssitelispdir)
- 
- 	@echo "---------------------------------------------------------"
- 	@echo "Trying to install rep.m4 in $(DESTDIR)$(aclocaldir);"
-@@ -61,7 +61,7 @@
- 	@echo "---------------------------------------------------------"
- 	-$(INSTALL_DATA) $(top_srcdir)/rep.m4 $(DESTDIR)$(aclocaldir)
  	mkdir -p $(DESTDIR)$(libdir)/pkgconfig
 -	$(INSTALL_DATA) $(top_srcdir)/librep.pc $(DESTDIR)$(libdir)/pkgconfig/
 +	$(INSTALL_DATA) librep.pc $(DESTDIR)$(libdir)/pkgconfig/
  
  installdirs : mkinstalldirs
  	$(SHELL) $< $(DESTDIR)$(repdir)/$(version) \
---- origsrc/librep-0.17.2/lisp/Makefile.in	2002-06-22 18:12:26.000000000 -0500
-+++ src/librep-0.17.2/lisp/Makefile.in	2008-11-27 00:59:55.307233300 -0600
-@@ -47,10 +47,10 @@
+--- origsrc/librep-0.17.3/lisp/Makefile.in	2002-06-22 18:12:26.000000000 -0500
++++ src/librep-0.17.3/lisp/Makefile.in	2009-03-05 12:52:23.219579900 -0600
+@@ -47,10 +47,10 @@ check : all
  install : all installdirs
  	for d in $(INSTALL_DIRS); do \
  	  for f in  $(foreach x,$(INSTALL_FILES),$$d/$(x)); do \
@@ -63,8 +57,8 @@
  
  installdirs : mkinstalldirs
  	$(SHELL) $< $(foreach x,$(INSTALL_DIRS),$(DESTDIR)$(replispdir)/$(x))
---- origsrc/librep-0.17.2/src/fake-libexec	2003-07-26 03:35:25.000000000 -0500
-+++ src/librep-0.17.2/src/fake-libexec	2008-11-26 23:30:11.934236300 -0600
+--- origsrc/librep-0.17.3/src/fake-libexec	2008-12-18 14:45:54.000000000 -0600
++++ src/librep-0.17.3/src/fake-libexec	2009-03-05 12:52:02.032486700 -0600
 @@ -4,6 +4,7 @@
  
  libdir="`pwd`/.libs"
@@ -73,8 +67,8 @@
  
  libs="rep.io.db.gdbm rep.io.db.sdbm rep.i18n.gettext rep.io.readline \
        rep.lang.record-profile rep.data.tables rep.io.timers \
-@@ -18,7 +19,7 @@
-   for b in `( cd $libdir && echo *\`basename $g\`.* )`; do
+@@ -18,7 +19,7 @@ for f in $libs; do
+   for b in `( cd $libdir && echo *\`basename $g\`* )`; do
      rm -f $dest/$b
      echo "$src/$b -> $dest/$b"
 -    ../mkinstalldirs $dest
