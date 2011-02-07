@@ -1,0 +1,77 @@
+--- origsrc/librep-0.91.0/Makedefs.in	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/Makedefs.in	2011-02-06 23:18:57.435036300 -0600
+@@ -99,9 +100,9 @@ rep_LIBTOOL=@LIBTOOL@
+ 	$(LIBTOOL) --mode=compile --tag=CC $(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+ 
+ # Rule for dlopen'able C objects
+-%.la : %.c
++%.la : %.c librep.la
+ 	$(LIBTOOL) --mode=compile --tag=CC $(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+-	$(rep_DL_LD) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $*.lo
++	$(rep_DL_LD) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $*.lo librep.la
+ 
+ # Build dependancy files from C source files.
+ .%.d : %.c
+--- origsrc/librep-0.91.0/rules.mk.sh	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/rules.mk.sh	2011-02-06 23:08:19.834032200 -0600
+@@ -20,7 +20,7 @@ rep_INSTALL_ALIASES=\$(repcommonexecdir)
+ #	\$(rep_DL_LD) link-opts...
+ 
+ rep_DL_LD=\$(rep_LIBTOOL) --mode=link --tag=CC \$(CC) -avoid-version -module \
+-	  -rpath \$(rpath_repcommonexecdir)
++	  -rpath \$(rpath_repcommonexecdir) -no-undefined
+ 
+ rep_DL_INSTALL=\$(rep_LIBTOOL) --mode=install \$(INSTALL)
+ rep_DL_UNINSTALL=\$(rep_LIBTOOL) --mode=uninstall rm
+--- origsrc/librep-0.91.0/src/Makefile.in	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/src/Makefile.in	2011-02-06 23:28:03.779274000 -0600
+@@ -59,7 +59,7 @@ all : librep.la $(DL_OBJS) check-dl rep
+ librep.la : $(OBJS) $(LIBOBJS)
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) \
+ 	  -version-info $(libversion) -export-symbols $(srcdir)/librep.sym \
+-	  -o $@ $^ -rpath $(libdir) $(LIBS) $(GMP_LIBS)
++	  -o $@ $^ -rpath $(libdir) -no-undefined $(LIBS) $(GMP_LIBS)
+ 
+ rep : $(REP_OBJS) $(EXTRA_LIBOBJS) librep.la
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) -export-dynamic $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ \
+@@ -124,31 +125,31 @@ uninstall :
+ repdoc : repdoc.o
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -o $@ $^ $(GDBM_LIBS)
+ 
+-sdbm.la : $(SDBM_LOBJS) repsdbm.lo
++sdbm.la : $(SDBM_LOBJS) repsdbm.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-gdbm.la : repgdbm.lo
++gdbm.la : repgdbm.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(GDBM_LIBS)
+ 
+-gettext.la : gettext.lo
++gettext.la : gettext.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(INTL_OBJS)
+ 
+-readline.la : readline.lo
++readline.la : readline.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(READLINE_LIBS)
+ 
+-safe-interpreter.la : safemach.lo
++safe-interpreter.la : safemach.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-sockets.la : sockets.lo
++sockets.la : sockets.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-md5.la : md5.lo rep-md5.lo
++md5.la : md5.lo rep-md5.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-utf8.la : utf8.lo
++utf8.la : utf8.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^
+ 
+-ffi.la : ffi.lo
++ffi.la : ffi.lo librep.la
+ 	$(rep_DL_LD) $(LDFLAGS) -o $@ $^ $(LIBFFI_LIBS)
+ 
+ .libexec : $(DL_OBJS)

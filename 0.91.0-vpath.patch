@@ -1,5 +1,5 @@
---- origsrc/librep-0.17.3/Makedefs.in	2008-10-18 07:29:13.000000000 -0500
-+++ src/librep-0.17.3/Makedefs.in	2009-03-05 12:52:23.203955200 -0600
+--- origsrc/librep-0.91.0/Makedefs.in	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/Makedefs.in	2011-02-06 23:18:57.435036300 -0600
 @@ -24,6 +24,7 @@ SHELL=/bin/sh
  
  top_srcdir=@top_srcdir@
@@ -22,8 +22,8 @@
  rep_LIBTOOL=@LIBTOOL@
  
  # Rule for ``normal'' C objects
---- origsrc/librep-0.17.3/Makefile.in	2008-12-20 03:06:26.000000000 -0600
-+++ src/librep-0.17.3/Makefile.in	2009-03-05 12:51:07.486659000 -0600
+--- origsrc/librep-0.91.0/Makefile.in	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/Makefile.in	2011-02-06 23:12:12.752038400 -0600
 @@ -49,13 +49,13 @@ install : all installdirs
  	  ( cd $$dir && $(MAKE) $@ ) || exit 1; \
  	done
@@ -42,8 +42,8 @@
  
  installdirs : mkinstalldirs
  	$(SHELL) $< $(DESTDIR)$(repdir)/$(version) \
---- origsrc/librep-0.17.3/lisp/Makefile.in	2002-06-22 18:12:26.000000000 -0500
-+++ src/librep-0.17.3/lisp/Makefile.in	2009-03-05 12:52:23.219579900 -0600
+--- origsrc/librep-0.91.0/lisp/Makefile.in	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/lisp/Makefile.in	2011-02-06 23:12:36.191014000 -0600
 @@ -47,10 +47,10 @@ check : all
  install : all installdirs
  	for d in $(INSTALL_DIRS); do \
@@ -57,8 +57,38 @@
  
  installdirs : mkinstalldirs
  	$(SHELL) $< $(foreach x,$(INSTALL_DIRS),$(DESTDIR)$(replispdir)/$(x))
---- origsrc/librep-0.17.3/src/fake-libexec	2008-12-18 14:45:54.000000000 -0600
-+++ src/librep-0.17.3/src/fake-libexec	2009-03-05 12:52:02.032486700 -0600
+--- origsrc/librep-0.91.0/man/Makefile.in	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/man/Makefile.in	2011-02-06 23:33:13.245324600 -0600
+@@ -49,7 +49,7 @@ install : librep.info installdirs
+ 	  $(INSTALL_DATA) $$f $(DESTDIR)$(infodir); \
+ 	done
+ 	-install-info --info-dir=$(DESTDIR)$(infodir) librep.info
+-	for f in rep*.1; do \
++	for f in $(srcdir)/rep*.1; do \
+ 		gzip $$f -c > $$f.gz; \
+ 		$(INSTALL_DATA) $$f.gz $(DESTDIR)$(prefix)/share/man/man1/; \
+ 	done
+--- origsrc/librep-0.91.0/src/Makefile.in	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/src/Makefile.in	2011-02-06 23:28:03.779274000 -0600
+@@ -27,7 +27,7 @@ COMMON_SRCS =	continuations.c datums.c d
+ 		streams.c structures.c symbols.c tuples.c values.c weak-refs.c
+ UNIX_SRCS =	unix_dl.c unix_files.c unix_main.c unix_processes.c
+ 
+-INSTALL_HDRS = rep.h rep_lisp.h rep_regexp.h rep_subrs.h rep_gh.h rep_config.h
++INSTALL_HDRS = rep.h rep_lisp.h rep_regexp.h rep_subrs.h rep_gh.h
+ 
+ SRCS = $(COMMON_SRCS) $(UNIX_SRCS)
+ OBJS = $(SRCS:.c=.lo)
+@@ -103,6 +103,7 @@ install : all installdirs
+ 	for i in $(INSTALL_HDRS); do \
+ 	  $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(includedir)/rep/; \
+ 	done
++	$(INSTALL_DATA) rep_config.h $(DESTDIR)$(includedir)/rep/; \
+ 	$(SHELL) $(top_srcdir)/install-aliases -c . $(DESTDIR)$(repexecdir)
+ 
+ installdirs : mkinstalldirs
+--- origsrc/librep-0.91.0/src/fake-libexec	2010-09-24 14:19:26.000000000 -0500
++++ src/librep-0.91.0/src/fake-libexec	2011-02-06 23:13:16.918898100 -0600
 @@ -4,6 +4,7 @@
  
  libdir="`pwd`/.libs"

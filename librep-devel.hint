@@ -1,5 +1,5 @@
 category: Interpreters
-requires: crypt libgdbm4 libgmp-devel librep9
+requires: crypt libgmp-devel librep9
 external-source: librep
 sdesc: "Lisp interpreter library (development)"
 ldesc: "librep is a shared library implementing a Lisp dialect that is

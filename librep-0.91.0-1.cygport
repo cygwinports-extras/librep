@@ -1,0 +1,20 @@
+DESCRIPTION="Lisp interpreter implemented as shared library"
+HOMEPAGE="http://sawfish.wikia.com/wiki/Librep"
+SRC_URI="http://download.tuxfamily.org/sawfish/${PN}/${P}.tar.xz"
+
+PATCH_URI="
+	0.91.0-no-undefined.patch
+	0.91.0-vpath.patch
+"
+
+PKG_NAMES="${PN} ${PN}9 ${PN}-devel"
+librep_CONTENTS="--exclude=repdoc* usr/bin/rep*.exe usr/share/doc/ usr/share/info/ usr/share/man/"
+librep9_CONTENTS="usr/bin/cygrep-9.dll usr/lib/rep/${PV}/ usr/share/rep/${PV}/"
+librep_devel_CONTENTS="usr/bin/rep-xgettext usr/bin/repdoc.exe
+                       usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/lib/rep/${CHOST}/
+                       usr/share/emacs/ usr/share/man/man1/repdoc.*"
+
+NO_AUTOHEADER=1
+CPPFLAGS+=" -DHAVE_FFI_H -DHAVE_LIBFFI"
+CYGCONF_ARGS="--libexecdir=/usr/lib --disable-static"
+LIBS="-lintl"
