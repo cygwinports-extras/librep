@@ -1,6 +1,6 @@
 DESCRIPTION="Lisp interpreter implemented as shared library"
 HOMEPAGE="http://sawfish.wikia.com/wiki/Librep"
-SRC_URI="http://download.tuxfamily.org/sawfish/${PN}/${P}.tar.xz"
+SRC_URI="http://download.tuxfamily.org/librep/${P}.tar.xz"
 
 PATCH_URI="
 	0.91.0-no-undefined.patch
