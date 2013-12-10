@@ -1,0 +1,27 @@
+NAME="librep"
+VERSION=0.91.1
+RELEASE=1
+CATEGORY="Interpreters"
+SUMMARY="Lisp interpreter"
+DESCRIPTION="librep is a shared library implementing a Lisp dialect that is
+lightweight, reasonably fast, and highly extensible. It contains an
+interpreter, byte-code compiler and virtual machine. Applications may
+use the interpreter as an extension language, or it may be used for
+standalone scripts."
+HOMEPAGE="http://sawfish.wikia.com/wiki/Librep"
+SRC_URI="http://download.tuxfamily.org/librep/librep-${VERSION}.tar.xz"
+PATCH_URI="
+	0.91.0-no-undefined.patch
+	0.91.0-vpath.patch
+"
+
+PKG_NAMES="${NAME} ${NAME}9 ${NAME}-devel"
+librep_CONTENTS="--exclude=repdoc* usr/bin/rep*.exe usr/share/doc/ usr/share/info/ usr/share/man/"
+librep9_CONTENTS="usr/bin/cygrep-9.dll usr/lib/rep/${VERSION}/ usr/share/rep/${VERSION}/"
+librep_devel_CONTENTS="usr/bin/rep-xgettext usr/bin/repdoc.exe
+                       usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/lib/rep/${CHOST}/
+                       usr/share/emacs/ usr/share/man/man1/repdoc.*"
+
+NO_AUTOHEADER=1
+CPPFLAGS+=" -DHAVE_FFI_H -DHAVE_LIBFFI"
+LIBS="-lintl"
